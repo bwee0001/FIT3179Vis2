@@ -5,35 +5,49 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Metal&family=Noto+Sans&display=swap" rel="stylesheet">
   
   <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
   
 </head>
 <body>
 
-  <main>
-    <h1>Minerals of the World & Australia</h1>
+  <main class="backgroundImage">
+    <h1 id="mainTitle">Ores & Minerals of Australia</h1>
 
-    <div>
-
+    <div id="Opal">
+        <h2 class="fancyFont">Opal</h2>
+        <div id="contentBox">
+          <h3>Australia's National Gemstone</h3>
+          ___________________________________________________
+          <div id="contentOpal">
+            <p>Opal or the <em>fire of the desert</em> as known to the Indigenous people, was proclaimed as Australia's national gemstone on 23 July 1993. Australia's Opal fields alone
+            are larger than the rest of the world's Opal fields combined.</p>
+            <p>There are 3 main forms of opals that are found in Australia, Black Opals, Boulder Opals and White or Milky opals. Of the three, Black Opals is exclusive to Australia.
+            </p>
+          </div>
+          ___________________________________________________
+          <br><br>
+          <div id="opal_map"></div>
+        </div>
     </div>
 
-    <div id="Opal Mines">
-        <h2>Opal</h2>
-        <h3>Australia's National Gemstone</h3>
-        <div></div>
-    </div>
+    
+  <div id="map_mineral"></div>
   </main>
-  
-<div id="map_mineral"></div>
-
 <script type="text/javascript">
 
   //var spec2 = "js/scatter_plot_interactive.vg.json";
   var spec2 = "js/map.vg.json";
+  var spec3 = "js/Opalmap.vg.json";
   vegaEmbed('#map_mineral', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#opal_map', spec3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
