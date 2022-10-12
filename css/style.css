@@ -1,14 +1,15 @@
 #mainTitle{
     text-align: center;
-    background-color: #EEE2DF;
-    margin-left: 20%;
-    margin-right: 20%;
+    background-color: #5E3023;
+    margin-left: 25%;
+    margin-right: 25%;
     padding-bottom: 1rem;
     padding-top: 1rem;
     margin-bottom: 0%;
     margin-top: 0%;
     font-family: 'Metal';
     font-size: 3rem;
+    color: black;
 }
 .fancyFont{
     font-family: 'Metal';
@@ -16,8 +17,8 @@
     margin-bottom: 0%;
     padding-bottom: 0%;
     background-color: #C97C5D;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 h3{
     margin-top: 0%;
@@ -25,12 +26,12 @@ h3{
     margin-bottom: 0%;
     padding-bottom: 0%;
     background-color: #EED7C5;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 .backgroundImage{
-    background-image: url("../img/gems2.jpg");
-    background-size: 10%;
+    background-image: url("../img/gems3.jpg");
+    background-size: 15%;
     background-repeat: repeat;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -38,15 +39,15 @@ h3{
     padding-top: 1rem;
     text-align: center;
     margin-top: 0%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: #EEE2DF;
     border: black;
 }
 #contentBox{
     background-color: #EED7C5;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 #contentOpal{
     background-color: #EED7C5;
@@ -66,4 +67,8 @@ h3{
 }
 summary{
     visibility: hidden;
+}
+.opalImage{
+    width: 100px;
+    height: 130px;
 }

@@ -32,10 +32,12 @@
                 "type": "text",
                 "align": "left",
                 "baseline": "bottom",
-                "text": ["1 Dot = 1 Mine"],
-                "fontSize": 16,
-                "dx": -200,
-                "dy": 150
+                "text": ["Lightning Ridge"],
+                "font": "Noto Sans",
+                "fontStyle": "bold",
+                "fontSize": 13,
+                "dx": 165,
+                "dy": 45
             }
         },
         {
@@ -45,17 +47,25 @@
         ],
         "params":[
             {
-                "name": "state_highlight",
-                "select": {"type": "point", "fields": ["state"]},
+                "name": "opal_highlight",
+                "select": {"type": "point", "fields": ["names"]},
                 "bind": "legend"
             }
         ],
-        "mark": {"type": "point", "color": "black", "fill": "black", "tooltip": {"content": "data"}, "shape":"M 1.3212 5.544 C 1.3212 5.544 1.9212 4.3452 1.9212 4.3452 C 1.9212 4.3452 3.1212 3.4452 3.1212 3.4452 C 3.1212 3.4452 4.32 3.7452 4.32 3.7452 C 4.32 3.7452 4.92 3.1464 4.92 3.1464 C 4.92 3.1464 5.52 2.8464 5.52 2.8464 C 5.52 2.8464 5.52 5.544 5.52 5.544 C 5.52 5.544 1.3212 5.544 1.3212 5.544 Z M 0.1224 0.1488 C 1.6692 0.6576 3.018 1.6056 4.0212 2.8464 M 0.1224 0.1488 C 1.8192 0.354 3.2592 1.3932 4.02 2.844 M 0.1224 4.3452 C 0.1224 4.3452 3.1212 0.1488 3.1212 0.1488"},
+        "mark": {"type": "point", "tooltip": {"content": "data"}, "shape":"M 1.3212 5.544 C 1.3212 5.544 1.9212 4.3452 1.9212 4.3452 C 1.9212 4.3452 3.1212 3.4452 3.1212 3.4452 C 3.1212 3.4452 4.32 3.7452 4.32 3.7452 C 4.32 3.7452 4.92 3.1464 4.92 3.1464 C 4.92 3.1464 5.52 2.8464 5.52 2.8464 C 5.52 2.8464 5.52 5.544 5.52 5.544 C 5.52 5.544 1.3212 5.544 1.3212 5.544 Z M 0.1224 0.1488 C 1.6692 0.6576 3.018 1.6056 4.0212 2.8464 M 0.1224 0.1488 C 1.8192 0.354 3.2592 1.3932 4.02 2.844 M 0.1224 4.3452 C 0.1224 4.3452 3.1212 0.1488 3.1212 0.1488"},
         "encoding": {
             "longitude": {"field": "longitude", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
-            "color": {
-                "scale":{"scheme":"black"}
+            "color":{
+                "field": "names",
+                "type": "nominal",
+                "scale": {"domain": ["Black Opal", "Boulder Opal", "White Opal"], "range": ["#000000", "#964B00", "#FFFDD0"]},
+                "title": "Main Opal Type",
+                "legend": {"legendX":530, "legendY":10, "labelOffset": 15, "labelFontSize": 12, "titleFontSize": 15, "labelFont":"Noto Sans", "labelFontStyle": "bold", "titleFont": "Noto Sans", "orient": "none"}
+            },
+            "opacity": {
+                "condition": {"param": "opal_highlight", "value": 1},
+                "value": 0.2
             },
             "tooltip": [
                 {"field": "site_name", "type": "nominal", "title":"Mine Name"},
@@ -69,7 +79,7 @@
     "config": {
         "background": null,
         "view": {
-            "stroke": "transparent"
+            "stroke": null
          }
     }
     

@@ -7,10 +7,11 @@
         {
             "title": {
                 "text":"All Mineral Ores Mine Locations in Australia",
-                "fontSize": 20
+                "fontSize": 20,
+                "font": "Noto Sans"
             },
-            "width": 900,
-            "height": 700,
+            "width": 400,
+            "height": 500,
             "projection": {"type": "conicEqualArea","rotate":[-10,30,40]},
             "layer": [
                 {
@@ -34,9 +35,11 @@
                         "align": "left",
                         "baseline": "bottom",
                         "text": ["1 Dot = 1 Mine"],
-                        "fontSize": 20,
-                        "dx": -400,
-                        "dy": 300
+                        "font": "Noto Sans",
+                        "fontStyle": "bold",
+                        "fontSize": 13,
+                        "dx": -200,
+                        "dy": 170
                     }
                 },
                 {
@@ -61,7 +64,7 @@
                         "type": "nominal",
                         "title": "Development Status",
                         "scale": {"scheme": "paired"},
-                        "legend": {"labelFontSize": 14, "titleFontSize": 16}
+                        "legend": {"labelFontSize": 14, "titleFontSize": 16, "orient": "none", "legendX":350, "legendY":20, "labelFont": "Noto Sans", "titleFont":"Noto Sans"}
                     },
                     "opacity": {
                         "condition": [{"param": "development_highlight", "value": 1}],
@@ -82,10 +85,11 @@
         {
             "title": {
                 "text":"Number & Status of Mineral Ore Mines in Each State",
-                "fontSize": 20
+                "fontSize": 20,
+                "font": "Noto Sans"
             },
-            "width": 900,
-            "height": 700,
+            "width": 500,
+            "height": 300,
             "layer": [
                 {
                     "params":[
@@ -99,7 +103,7 @@
                         "y":{
                             "field": "state",
                             "type": "nominal",
-                            "title": "State",
+                            "title": " ",
                             "sort": "-x"
                         },
                         "x":{
@@ -138,7 +142,7 @@
                         },
                         {"filter": "datum.ranking == 1"},
                         {
-                          "calculate": "datum['state'] + 'has the highest number; of prospect mines at: ' + datum['mineCount'] + ' mines'",
+                          "calculate": "datum['state'] + ' has the highest number; of prospect mines at: ' + datum['mineCount'] + ' mines'",
                           "as": "text_annotation_raw"
                         },
                         {
@@ -150,9 +154,10 @@
                         {
                           "mark": {
                             "type": "text",
-                            "fontSize":15,
-                            "dx": -200,
-                            "dy": -210,
+                            "font": "Noto Sans",
+                            "fontSize": 11.8,
+                            "dx": -110,
+                            "dy": -90,
                             "baseline": "middle"
                           },
                           "encoding": {
@@ -166,9 +171,14 @@
         }
         ],
         "config": {
+            "background": null,
             "axis": {
               "labelFontSize":14,
-              "titleFontSize":16
+              "titleFontSize":16,
+              "labelFont": "Noto Sans"
+            },
+            "view": {
+                "stroke": null
             }
         }
     }
