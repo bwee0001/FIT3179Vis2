@@ -34,7 +34,7 @@
                         "type": "text",
                         "align": "left",
                         "baseline": "bottom",
-                        "text": ["1 Dot = 1 Mine"],
+                        "text": [""],
                         "font": "Noto Sans",
                         "fontStyle": "bold",
                         "fontSize": 13,
