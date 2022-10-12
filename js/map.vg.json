@@ -1,0 +1,100 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"data": {
+    "url": "https://raw.githubusercontent.com/bwee0001/Week10Homework/main/data/Mineral%20Ores%20Australia.csv"
+},
+"vconcat": [
+    
+    {
+        "title": {
+            "text":"Number & Status of Mineral Ore Mines in Each State",
+            "fontSize": 20
+        },
+        "width": 900,
+        "height": 700,
+        "layer": [
+            {
+                "params":[
+                    {
+                        "name": "development_highlight",
+                        "select": {"type": "point", "fields": ["dev_stat"]}
+                    }
+                ],
+                "mark": {"type":"bar", "tooltip": {"content": "data"}},
+                "encoding": {
+                    "y":{
+                        "field": "state",
+                        "type": "nominal",
+                        "title": "State",
+                        "sort": "-x"
+                    },
+                    "x":{
+                        "aggregate": "count",
+                        "title": "Number of Mines",
+                        "type": "quantitative"
+                    },
+                    "color":{
+                        "field": "dev_stat",
+                        "type": "nominal",
+                        "scale": {"scheme": "paired"},
+                        "title": "Development Status",
+                        "legend": {"labelFontSize": 14, "titleFontSize": 16}
+                    },
+                    "opacity": {
+                        "condition": {"param": "development_highlight", "value": 1},
+                        "value": 0.2
+                    },
+                    "tooltip": [
+                        {"field": "state", "type": "nominal", "title":"State"},
+                        {"field": "dev_stat", "type": "nominal", "title":"Development Status"},
+                        {"field": "__count", "type": "quantitative", "title":"Number of Mines"}
+                    ]
+                } 
+            },
+            {
+                  "transform": [
+                    {"filter": "datum.dev_stat == 'Prospect'"},
+                    {
+                        "aggregate": [{"op": "count", "as": "mineCount"}],
+                        "groupby": ["state", "dev_stat"]
+                    },
+                    {
+                        "window": [{"op": "rank", "as": "ranking"}],
+                        "sort": [{"field": "mineCount", "order": "descending"}]
+                    },
+                    {"filter": "datum.ranking == 1"},
+                    {
+                      "calculate": "datum['state'] + 'has the highest number; of prospect mines at: ' + datum['mineCount'] + ' mines'",
+                      "as": "text_annotation_raw"
+                    },
+                    {
+                      "calculate": "split(datum.text_annotation_raw, ';')",
+                      "as": "text_annotation"
+                    }
+                  ],
+                  "layer": [
+                    {
+                      "mark": {
+                        "type": "text",
+                        "fontSize":15,
+                        "dx": -200,
+                        "dy": -210,
+                        "baseline": "middle"
+                      },
+                      "encoding": {
+                        "color": {"value": "white"},
+                        "text": {"field": "text_annotation"}
+                    }
+                    }
+                  ]
+            }
+        ]
+    }
+    ],
+    "config": {
+        "axis": {
+          "labelFontSize":14,
+          "titleFontSize":16
+        }
+    }
+}
