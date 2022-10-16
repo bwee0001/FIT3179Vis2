@@ -132,10 +132,14 @@ p{
     margin-right: 10%;
     font-size: 14px;
 }
+#mines_top5{
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 @media only screen and (max-width: 900px) {
     #map_mineral{
         max-width: 300px;
         text-align: center;
     }
-  }
+}

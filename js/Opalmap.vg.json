@@ -24,7 +24,7 @@
                 "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Vis2/main/js/mapWithStatelines.topojson",
                 "format": {"type": "topojson", "feature": "ne_50m_admin_1_states_provinces"}
             },
-            "mark": {"type": "geoshape", "fill": null, "stroke": "white"}
+            "mark": {"type": "geoshape", "fill": null, "stroke": "black"}
         },
         {
             "data": {"values": [{}]},

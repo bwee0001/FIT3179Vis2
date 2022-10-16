@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Top 5 Minerals With The Most Number of Mines",
+    "text": "Minerals With The Most Number of Mines",
     "fontSize": 20,
     "font": "Noto Sans"
   },
@@ -10,9 +10,26 @@
   "data": {
     "values": [
       {"a": "Gold", "b": 265}, {"a": "Osmium", "b": 184}, {"a": "Iridium", "b": 183},
-      {"a": "Titanium", "b": 119}, {"a": "Copper", "b": 110}
+      {"a": "Titanium", "b": 119}, {"a": "Copper", "b": 110},{"a": "Uranium", "b": 96}, 
+      {"a": "Zirconium", "b": 85}, {"a": "Platinum", "b": 64}, {"a": "Iron", "b": 60}, {"a": "Zinc", "b": 58}
     ]
   },
+  "params": [
+		{ "name": "Top_X", "value": 5 , 
+			"bind": {"input": "range", "min": 1, "max": 10, "step": 1, "name": "Top N Minerals: " }
+		}
+	],
+	"transform": [{
+    "sort": [
+      {"field": "b", "order": "descending"}
+		],
+		"window": [{
+		  "op": "rank",
+		  "as": "rank"
+		}]
+	  },
+			{ "filter": "datum.rank <= Top_X" }
+	  ],
   "mark": "bar",
   "encoding": {
     "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}, "title": "Mineral","sort": "-y"},
