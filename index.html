@@ -23,14 +23,23 @@
       <h2 class="fancyFont">Mineral Ore Mines</h2>
       <div id="contentBox">
         <h3>Australia's Mines</h3>
-        ___________________________________________________
+        <hr class="rowDivider">
         <div id="contentOpal">
-        <p>Australia has over 1000 mines located across the states, however less than half of them are currently actively producing ores.<br>
-        Western Australia currenly has the largest amount of active mines, and is the largest contributor of Australia's iron ore exports.</p>
-          ___________________________________________________
-          <br><BR>
+          <p>Australia has over 1000 mines located across the states, however less than half of them are currently actively producing ores.</p><br>
+          <p>Western Australia currenly has the largest amount of active mines, and is the largest contributor of Australia's iron ore exports.</p>
+          <br>
         </div>
+        <hr class="rowDivider">
         <div id="map_mineral"></div>
+        <p style="padding-left:10%">*Although not a state, Northern Territory will be considered as a category in this visualisation. <br> <br>Click on the legend or bar chart to filter!</p>
+        <hr class="rowDivider">
+        <div id="contentOpal">
+          <p>Despite being the world's number 1 exporter of iron, Australia only has a little over 60 iron mines. Far below the number of gold mines which stands at 265 as seen below.</p><br>
+          <p>This is because of the quantity at which certain minerals appear are unevenly distributed. For instance, iron naturally occurs in much larger quanities as compared to gold or iridium.</p>
+          <br>
+        </div>
+        <hr class="rowDivider"><br>
+        <div id="mines_top5"></div>
       </div>
     </div>
 
@@ -38,25 +47,31 @@
         <h2 class="fancyFont">Opals</h2>
         <div id="contentBox">
           <h3>Australia's National Gemstone</h3>
-          ___________________________________________________
+          <hr class="rowDivider">
           <div id="contentOpal">
-            <p>Opal or the <em>fire of the desert</em> as known to the Indigenous people, was proclaimed as Australia's national gemstone on 23 July 1993. Australia's Opal fields alone
+            <p>The Opal or the <em>fire of the desert</em> as known to the Indigenous people, was proclaimed as Australia's national gemstone on 23 July 1993. Australia's Opal fields alone
             are larger than the rest of the world's Opal fields combined.</p>
-            <img class="opalImage" src="img/black_opal_cut.png"/> 
-            <img class="opalImage" src="img/boulder_opal_cut.png"/>
-            <img class="opalImage" src="img/white_opal_cutt.png"/>
-            <p>There are 3 main forms of opals that are found in Australia as seen above from the order of left to right: Black Opals, Boulder Opals and White or Milky opals. Of the three, Black Opals is the most valuable and is
-            and is mainly mined from <strong>Lighting Ridge</strong></p>
+            <p>There are 3 main forms of opals that are found in Australia: Black Opals, Boulder Opals and White or Milky Opals. Of the three, Black Opals are the most valuable and is
+            and is mainly mined from <strong>Lighting Ridge</strong>.</p>
           </div>
-          ___________________________________________________
-          <br><br>
-          <div id="opal_map"></div>
-          ___________________________________________________
+          <hr class="rowDivider">
+          <table>
+            <tr>
+              <th id="blackOpal" onclick="toggleOpal('black')"><strong>Black Opal</strong><br><img class="opalImage" src="img/black_opal_cut.png"/></th>
+              <th id="boulderOpal" onclick="toggleOpal('boulder')"><strong>Boulder Opal</strong><br><img class="opalImage" src="img/boulder_opal_cut.png"/></th>
+              <th id="whiteOpal" onclick="toggleOpal('white')"><strong>White Opal</strong><br><img class="opalImage" src="img/white_opal_cutt.png"/></th>
+            </tr>
+          </table>
+
+          <p id="opalStory" style="text-align:center">Click on an Opal above to find out more!</p>
+          <hr class="rowDivider">
           <div id="contentOpal">
-            <p>Australia is the only place in the world where opalised animal and plant fossils can be found. This is because the combination of pH and other chemical conditions required for opal formation is extremely specific.
-             Australia used to be covered by a vast insland sea some 20 million years ago until it subsided, leaving behind soluble silicia that permeated the bagin which gave rise to opal formation.
-            </p>
-          </div>
+            <p>Australia is the only place in the world where opalised animal and plant fossils can be found. This is because the combination of pH and other chemical conditions required for opal formation is extremely specific.<p>
+            <p>Australia used to be covered by a vast insland sea some 20 million years ago until it subsided, leaving behind soluble silicia that permeated the bagin which gave rise to opal formation.</p>
+            <br>
+          </div>  
+          <hr class="rowDivider"><br>
+          <div id="opal_map"></div>
         </div>
     </div>
 
@@ -68,12 +83,48 @@
   //var spec2 = "js/scatter_plot_interactive.vg.json";
   var spec2 = "js/map.vg.json";
   var spec3 = "js/Opalmap.vg.json";
+  var spec4 = "js/Top5MineralMines.vg.json";
   vegaEmbed('#map_mineral', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   vegaEmbed('#opal_map', spec3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+  vegaEmbed('#mines_top5', spec4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  function toggleOpal(opal){
+      let black = document.getElementById('blackOpal');
+      let boulder = document.getElementById('boulderOpal');
+      let white = document.getElementById('whiteOpal');
+      let opalText = document.getElementById('opalStory')
+    switch(opal){
+      case "black":
+        black.style.opacity = 1;
+        boulder.style.opacity = 0.4;
+        white.style.opacity = 0.4;
+        opalText.innerHTML=" <p>The Opal or the <em>fire of the desert</em> as known to the Indigenous people, was proclaimed as Australia's national gemstone on 23 July 1993. Australia's Opal fields aloneare larger than the rest of the world's Opal fields combined.</p><p>There are 3 main forms of opals that are found in Australia: Black Opals, Boulder Opals and White or Milky Opals. Of the three, Black Opals are the most valuable and isnd is mainly mined from <strong>Lighting Ridge</strong>.</p>";
+        break;
+      case "boulder":
+        black.style.opacity = 0.4;
+        boulder.style.opacity = 1;
+        white.style.opacity = 0.4;
+        opalText.innerText="boulder opal!";
+        break;
+      case "white":
+        black.style.opacity = 0.4;
+        boulder.style.opacity = 0.4;
+        white.style.opacity = 1;
+        opalText.innerText="white opal!";
+        break;
+      default:
+        black.style.opacity = 1;
+        boulder.style.opacity = 1;
+        white.style.opacity = 1;
+        opalText.innerText="Click on an Opal above to find out more!";  
+        break;
+    }
+  }
 </script>
 
 </body>

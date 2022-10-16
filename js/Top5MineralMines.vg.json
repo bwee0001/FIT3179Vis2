@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 5 Minerals With The Most Number of Mines",
+    "fontSize": 20,
+    "font": "Noto Sans"
+  },
+  "width": "container",
+  "height": 500,
+  "data": {
+    "values": [
+      {"a": "Gold", "b": 265}, {"a": "Osmium", "b": 184}, {"a": "Iridium", "b": 183},
+      {"a": "Titanium", "b": 119}, {"a": "Copper", "b": 110}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}, "title": "Mineral","sort": "-y"},
+    "y": {"field": "b", "type": "quantitative", "title": "Number of Mines"},
+    "color": {
+      "legend": {"labelOffset": 15, "labelFontSize": 12, "titleFontSize": 15, "labelFont":"Noto Sans", "labelFontStyle": "bold", "titleFont": "Noto Sans", "orient": "top-right"  }
+    },
+    "tooltip": [
+      {"field": "a", "type": "nominal", "title":"Mineral"},
+      {"field": "b", "type": "nominal", "title":"Number of Mines"}
+    ] 
+  },
+  "config": {
+    "background": null,
+    "axis": {
+      "labelFontSize":14,
+      "titleFontSize":16,
+      "labelFont": "Noto Sans"
+    },
+    "view": {
+        "stroke": null
+    },
+    "concat": { 
+        "spacing": 50
+    }
+}
+}

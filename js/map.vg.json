@@ -10,7 +10,7 @@
                 "fontSize": 20,
                 "font": "Noto Sans"
             },
-            "width": 400,
+            "width": "container",
             "height": 500,
             "projection": {"type": "conicEqualArea","rotate":[-10,30,40]},
             "layer": [
@@ -63,8 +63,8 @@
                         "field": "dev_stat",
                         "type": "nominal",
                         "title": "Development Status",
-                        "scale": {"scheme": "paired"},
-                        "legend": {"labelFontSize": 14, "titleFontSize": 16, "orient": "none", "legendX":350, "legendY":20, "labelFont": "Noto Sans", "titleFont":"Noto Sans"}
+                        "scale": {"domain": ["Occurrence", "Past Producer", "Producer", "Prospect"], "range": ["#a6cee3", "#1f78b4", "#b2df8a","#33a02c"]},
+                        "legend": {"labelOffset": 15, "labelFontSize": 12, "titleFontSize": 15, "labelFont":"Noto Sans", "labelFontStyle": "bold", "titleFont": "Noto Sans", "orient": "bottom"  }
                     },
                     "opacity": {
                         "condition": [{"param": "development_highlight", "value": 1}],
@@ -88,8 +88,8 @@
                 "fontSize": 20,
                 "font": "Noto Sans"
             },
-            "width": 500,
-            "height": 300,
+            "width": "container",
+            "height": 400,
             "layer": [
                 {
                     "params":[
@@ -100,13 +100,13 @@
                     ],
                     "mark": {"type":"bar", "tooltip": {"content": "data"}},
                     "encoding": {
-                        "y":{
+                        "x":{
                             "field": "state",
                             "type": "nominal",
                             "title": " ",
-                            "sort": "-x"
+                            "sort": "-y"
                         },
-                        "x":{
+                        "y":{
                             "aggregate": "count",
                             "title": "Number of Mines",
                             "type": "quantitative"
@@ -155,13 +155,13 @@
                           "mark": {
                             "type": "text",
                             "font": "Noto Sans",
-                            "fontSize": 11.8,
-                            "dx": -110,
-                            "dy": -90,
+                            "fontSize": 14,
+                            "dx": -120,
+                            "dy": -30,
                             "baseline": "middle"
                           },
                           "encoding": {
-                            "color": {"value": "white"},
+                            "color": {"value": "black"},
                             "text": {"field": "text_annotation"}
                         }
                         }
@@ -179,6 +179,9 @@
             },
             "view": {
                 "stroke": null
+            },
+            "concat": { 
+                "spacing": 50
             }
         }
     }
