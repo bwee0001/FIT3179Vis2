@@ -62,8 +62,26 @@
               <th id="whiteOpal" onclick="toggleOpal('white')"><strong>White Opal</strong><br><img class="opalImage" src="img/white_opal_cutt.png"/></th>
             </tr>
           </table>
-
           <p id="opalStory" style="text-align:center">Click on an Opal above to find out more!</p>
+
+          <div id="blackOpalStory" class="contentOpal">
+            <p>The <strong>Black Opal</strong> is the most valuable type of Opal and arguably the most famous as well. They are categorised by their dark color tone which ranges from
+            dark grey to jet black.</p>
+            <p>Black Opals have trace amounts of carbon and iron oxide elements present which gives it it's unusual dark color.  They are mainly mined from <strong>Lighting Ridge</strong>.</p>
+          </div>
+
+          <div id="boulderOpalStory" class="contentOpal">
+            <p><strong>Boulder Opals</strong> are regarded as the second most valuable Opal type after Black Opals. They are mined from large boulders, where they occur
+              in cracks and fissures in these boulders</p>
+            <p>They are mainly mined in the state of Queensland, where noteworthy mines include Quilpie and Winton and top quality Opals can fetch prices of up to $3500 AUD per carat.</p>
+          </div>
+
+          <div id="whiteOpalStory" class="contentOpal">
+            <p><strong>White Opals</strong> otherwise known as "Milky Opals" are easily distinguiable from their pale white color tone. They are a lot more common as compared to Black or
+              Boulder Opals and generally have less vibrant color.</p>
+            <p>They are mainly found in South Australia, and the quality of the Opal increases with its translucency, as its clarity and vibracy would be enhanced as a result. These are sometimes known as Crystal Opals</p>
+          </div>
+
           <hr class="rowDivider">
           <div id="contentOpal">
             <p>Australia is the only place in the world where opalised animal and plant fossils can be found. This is because the combination of pH and other chemical conditions required for opal formation is extremely specific.<p>
@@ -97,31 +115,48 @@
       let black = document.getElementById('blackOpal');
       let boulder = document.getElementById('boulderOpal');
       let white = document.getElementById('whiteOpal');
-      let opalText = document.getElementById('opalStory')
+      let opalText = document.getElementById('opalStory');
+      let blackStory = document.getElementById('blackOpalStory');
+      let boulderStory = document.getElementById('boulderOpalStory');
+      let whiteStory = document.getElementById('whiteOpalStory');
     switch(opal){
       case "black":
         black.style.opacity = 1;
         boulder.style.opacity = 0.4;
         white.style.opacity = 0.4;
-        opalText.innerHTML=" <p>The Opal or the <em>fire of the desert</em> as known to the Indigenous people, was proclaimed as Australia's national gemstone on 23 July 1993. Australia's Opal fields aloneare larger than the rest of the world's Opal fields combined.</p><p>There are 3 main forms of opals that are found in Australia: Black Opals, Boulder Opals and White or Milky Opals. Of the three, Black Opals are the most valuable and isnd is mainly mined from <strong>Lighting Ridge</strong>.</p>";
+        opalText.style.display= "none";
+        blackStory.style.display= "flex"; 
+        boulderStory.style.display= "none"; 
+        whiteStory.style.display= "none"; 
         break;
       case "boulder":
         black.style.opacity = 0.4;
         boulder.style.opacity = 1;
         white.style.opacity = 0.4;
         opalText.innerText="boulder opal!";
+        opalText.style.display= "none";
+        blackStory.style.display= "none";
+        boulderStory.style.display= "flex"; 
+        whiteStory.style.display= "none"; 
         break;
       case "white":
         black.style.opacity = 0.4;
         boulder.style.opacity = 0.4;
         white.style.opacity = 1;
         opalText.innerText="white opal!";
+        opalText.style.display= "none";
+        blackStory.style.display= "none";
+        boulderStory.style.display= "none";
+        whiteStory.style.display= "flex"; 
         break;
       default:
         black.style.opacity = 1;
         boulder.style.opacity = 1;
         white.style.opacity = 1;
-        opalText.innerText="Click on an Opal above to find out more!";  
+        opalText.style.display= "flex";
+        blackStory.style.display= "none"; 
+        boulderStory.style.display= "none"; 
+        whiteStory.style.display= "none";  
         break;
     }
   }
